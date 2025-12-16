@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
+  <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="author" content="KingsSolution Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="KingsSolution - Trusted WAEC, NECO & GCE Updates and Assistance">
+  <meta property="og:description" content="KingsSolution provides real-time updates and verified answers for WAEC, NECO, and GCE. Trusted by thousands of students nationwide.">
+  <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png">
+  <meta property="og:url" content="https://kingssolution.netlify.app/questionUploader.html">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
+  <link rel="canonical" href="https://kingssolution.netlify.app/questionUploader.html" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
+  <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
+  <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
+  <link rel="icon" type="image/png" href="kingssolution.png">
+  <title>📘 Upload CBT Question</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+      width: 95%;
+      max-width: 750px;
+      animation: fadeIn 0.8s ease;
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a2980;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-top: 15px;
+    }
+
+    select, input, textarea, button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #26d0ce;
+      box-shadow: 0 0 6px rgba(38, 208, 206, 0.5);
+    }
+
+    button {
+      background: #1a2980;
+      color: white;
+      font-weight: bold;
+      margin-top: 25px;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #26d0ce;
+      transform: scale(1.03);
+    }
+
+    #status {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 500;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      font-size: 14px;
+      padding: 15px 10px;
+      margin-top: auto;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      position: relative;
+    }
+
+    footer span {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 25px;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>📘 Upload CBT Question</h2>
+    
+<form id="questionForm">
+  <!-- Exam Type -->
+  <label>Select Exam:</label>
+  <select id="exam" required>
+    <option value="" disabled selected>--Choose Exam--</option>
+    <option value="WAEC">WAEC</option>
+    <option value="NECO">NECO</option>
+    <option value="JAMB">JAMB</option>
+    <option value="JUPEB">JUPEB</option>
+    <option value="NABTEB">NABTEB</option>
+    <option value="IJMB">IJMB</option>
+  </select>
+
+  <!-- Select Year -->
+  <label>Select Year:</label>
+  <select id="year" required>
+    <option value="" disabled selected>--Choose Year--</option>
+    <option>2020</option>
+    <option>2021</option>
+    <option>2022</option>
+    <option>2023</option>
+    <option>2024</option>
+  </select>
+
+  <!-- Select Subject -->
+  <label>Select Subject:</label>
+  <select id="subject" required>
+    <option value="" disabled selected>--Choose Subject--</option>
+    <option>Mathematics</option>
+    <option>English</option>
+    <option>Physics</option>
+    <option>Chemistry</option>
+    <option>Biology</option>
+  </select>
+
+  <!-- Topic -->
+  <label>Topic:</label>
+  <input type="text" id="topic" placeholder="e.g. Algebra, Trigonometry" required>
+
+  <!-- Question -->
+  <label>Question:</label>
+  <textarea id="question" rows="3" placeholder="Enter question..." required></textarea>
+
+  <!-- Options -->
+  <label>Options:</label>
+  <input type="text" id="option1" placeholder="Option A" required>
+  <input type="text" id="option2" placeholder="Option B" required>
+  <input type="text" id="option3" placeholder="Option C" required>
+  <input type="text" id="option4" placeholder="Option D" required>
+  <input type="text" id="option5" placeholder="Option E (optional)">
+  <input type="text" id="option6" placeholder="Option F (optional)">
+
+  <!-- Correct Answer -->
+  <label>Correct Answer (A–F):</label>
+  <input type="text" id="answer" maxlength="1" placeholder="A" required>
+
+  <!-- Image Upload -->
+  <label>Upload Image (optional):</label>
+  <input type="file" id="image" accept="image/*">
+
+  <!-- Explanation -->
+  <label>Explanation (optional):</label>
+  <textarea id="explanation" rows="3" placeholder="Add short explanation..."></textarea>
+
+  <button type="submit">Upload Question</button>
+</form>
+    
+    <p id="status"></p>
+  </div>
+
+  <footer>🔥 Powered by <span>KingsSolution</span> | © 2025 All Rights Reserved</footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEA3gSy36gSnyKoPj4NFLl9yIldR4LkpY",
+      authDomain: "kings-solution-bba0e.firebaseapp.com",
+      projectId: "kings-solution-bba0e",
+      storageBucket: "kings-solution-bba0e.appspot.com",
+      messagingSenderId: "18111445430",
+      appId: "1:18111445430:web:5ca39cd117b0e2a7e6a917",
+      measurementId: "G-XL28VT1DGT"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dnsuizb8o/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "be6pebbj";
+
+    document.getElementById("questionForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const exam = document.getElementById("exam").value;
+      const year = document.getElementById("year").value;
+      const subject = document.getElementById("subject").value;
+      const topic = document.getElementById("topic").value.trim();
+      const question = document.getElementById("question").value.trim();
+
+      const options = {
+  A: document.getElementById("option1").value.trim(),
+  B: document.getElementById("option2").value.trim(),
+  C: document.getElementById("option3").value.trim(),
+  D: document.getElementById("option4").value.trim(),
+  ...(document.getElementById("option5").value.trim() && { E: document.getElementById("option5").value.trim() }),
+  ...(document.getElementById("option6").value.trim() && { F: document.getElementById("option6").value.trim() })
+};
+
+      let answer = document.getElementById("answer").value.toUpperCase();
+      if (!["A", "B", "C", "D", 'E', 'F'].includes(answer)) {
+        Swal.fire("⚠️ Invalid Answer", "Answer must be one of A, B, C, or D.", "warning");
+        return;
+      }
+
+      const explanation = document.getElementById("explanation").value.trim();
+      const imageFile = document.getElementById("image").files[0];
+      let imageUrl = "";
+
+      try {
+        Swal.fire({
+          title: "Uploading...",
+          text: "Please wait while we upload your question.",
+          allowOutsideClick: false,
+          didOpen: () => Swal.showLoading()
+        });
+
+        if (imageFile) {
+          const formData = new FormData();
+          formData.append("file", imageFile);
+          formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+          const cloudRes = await fetch(CLOUDINARY_URL, { method: "POST", body: formData });
+          const cloudData = await cloudRes.json();
+          imageUrl = cloudData.secure_url;
+        }
+
+        await addDoc(collection(db, "CBT", exam, year, subject, "Questions"), {
+          topic, question, options, answer, explanation, imageUrl, createdAt: new Date()
+        });
+
+        Swal.fire("✅ Success", "Question uploaded successfully!", "success");
+        document.getElementById("questionForm").reset();
+      } catch (err) {
+        console.error(err);
+        Swal.fire("❌ Error", "Failed to upload question. Try again.", "error");
+      }
+    });
+  </script>
+</body>
+</html>

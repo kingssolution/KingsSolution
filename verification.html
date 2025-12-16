@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
+  <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="author" content="KingsSolution Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="KingsSolution - Trusted WAEC, NECO & GCE Updates and Assistance">
+  <meta property="og:description" content="KingsSolution provides real-time updates and verified answers for WAEC, NECO, and GCE. Trusted by thousands of students nationwide.">
+  <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png">
+  <meta property="og:url" content="https://kingssolution.netlify.app/verification">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
+  <link rel="canonical" href="https://kingssolution.netlify.app/verification" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
+  <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
+  <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
+  <title>VERIFICATION</title>
+  <link rel="icon" type="image/png" href="kingssolution.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="kingssolution.png" alt="KS Logo">
+      <span>KingsSolution</span>
+    </div>
+  </header>
+  <div class="container">
+    <h1>Verification Page</h1>
+    <p>This is the PIN for the last details you uploaded to our server <span class="pin"></span> Save this PIN somewhere because you will need it until your last paper.</p>
+    <p>Enter the PIN below to see the details you have uploaded</p>
+    <div class="verify">
+      <input type="password" id="inputPin" placeholder="Enter your PIN" required>
+      <button type="submit" onclick="verification()">Verify Subscription</button>
+    </div>
+    <hr />
+    <p class="scam">Beware of scam - Chat <a href="https://wa.me/+2347057217535">07057217535</a> Only.</p>
+  </div>
+  
+  <footer>
+    <div class="copyright">
+      Powered by <span>KingsSolution</span> | © 2024 All Rights Reserved
+    </div>
+  </footer>
+  
+  <script type="module" src="database.js"></script>
+  <script>
+    document.querySelector('.pin').innerHTML = JSON.parse(localStorage.getItem('userPin'));
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</body>
+
+</html>

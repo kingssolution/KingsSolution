@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
+  <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="author" content="KingsSolution Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="KingsSolution - Trusted WAEC, NECO & GCE Updates and Assistance">
+  <meta property="og:description" content="KingsSolution provides real-time updates and verified answers for WAEC, NECO, and GCE. Trusted by thousands of students nationwide.">
+  <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png">
+  <meta property="og:url" content="https://kingssolution.netlify.app/Admin-post.html">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
+  <link rel="canonical" href="https://kingssolution.netlify.app/Admin-post.html" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
+  <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
+  <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
+  <title>Publish Blog Post – KingsSolution</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, .06);
+    }
+    
+    h1 {
+      margin-bottom: 8px;
+      font-size: 26px;
+    }
+    
+    p {
+      color: #64748b;
+      margin-bottom: 28px;
+    }
+    
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      margin-top: 18px;
+    }
+    
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1.8px solid #e2e8f0;
+      font-size: 15px;
+      outline: none;
+      transition: .2s;
+    }
+    
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .1);
+    }
+    
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+    
+    button {
+      margin-top: 28px;
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      transition: .2s;
+    }
+    
+    button:hover {
+      background: #1e4ed8;
+    }
+    
+    .success {
+      margin-top: 16px;
+      color: #16a34a;
+      font-weight: 600;
+      display: none;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Publish New Blog Post</h1>
+    <p>Create and publish blog/news articles for KingsSolution</p><label>Post Title</label> <input id="title" placeholder="Enter post title">
+    
+    <label>Slug (URL)</label> <input id="slug" placeholder="auto-generated or custom">
+    
+    <label>Cover Image URL</label> <input id="image" placeholder="https://example.com/image.jpg">
+    <div>
+      <a href="imageUploader.html">Image uploader</a>
+    </div>
+    
+    <label>Category</label> <select id="category">
+      <option value="WAEC">WAEC</option>
+      <option value="NECO">NECO</option>
+      <option value="JAMB">JAMB</option>
+      <option value="JUPEB">JUPEB</option>
+      <option value="NABTEB">NABTEB</option>
+      <option value="GCE">GCE</option>
+      <option value="IJMB">IJMB</option>
+      <option value="General News">General News</option>
+    </select>
+    
+    <label>Post Content (HTML allowed)</label>
+    
+    <textarea id="content" placeholder="Write full article here..."></textarea><button onclick="publishPost()">Publish Post</button>
+    
+    <div class="success" id="success">✅ Post published successfully</div>
+  </div>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEA3gSy36gSnyKoPj4NFLl9yIldR4LkpY",
+      authDomain: "kings-solution-bba0e.firebaseapp.com",
+      projectId: "kings-solution-bba0e",
+      storageBucket: "kings-solution-bba0e.firebasestorage.app",
+      messagingSenderId: "18111445430",
+      appId: "1:18111445430:web:5ca39cd117b0e2a7e6a917",
+      measurementId: "G-XL28VT1DGT"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    window.publishPost = async () => {
+      const titleEl = document.getElementById('title');
+      const slugEl = document.getElementById('slug');
+      const imageEl = document.getElementById('image');
+      const contentEl = document.getElementById('content');
+      const categoryEl = document.getElementById('category');
+      const success = document.getElementById('success');
+      
+      if (!titleEl.value || !contentEl.value) {
+        alert('Title and content are required');
+        return;
+      }
+      
+      const slugValue = slugEl.value || titleEl.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+      
+      await addDoc(collection(db, "posts"), {
+        title: titleEl.value,
+        slug: slugValue,
+        excerpt: contentEl.value.substring(0, 160),
+        content: contentEl.value,
+        coverImage: imageEl.value,
+        category: categoryEl.value,
+        author: "KingsSolution Editorial Team",
+        status: "published",
+        createdAt: serverTimestamp()
+      });
+      
+      // Clear fields after publish
+      titleEl.value = '';
+      slugEl.value = '';
+      imageEl.value = '';
+      contentEl.value = '';
+      categoryEl.value = 'WAEC';
+      
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 3000);
+    };
+  </script>
+</body>
+
+</html>

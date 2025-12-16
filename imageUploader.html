@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
+  <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="author" content="KingsSolution Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="KingsSolution - Trusted WAEC, NECO & GCE Updates and Assistance">
+  <meta property="og:description" content="KingsSolution provides real-time updates and verified answers for WAEC, NECO, and GCE. Trusted by thousands of students nationwide.">
+  <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png">
+  <meta property="og:url" content="https://kingssolution.netlify.app/imageUploader.html">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
+  <link rel="canonical" href="https://kingssolution.netlify.app/imageUploader.html" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
+  <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
+  <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
+  <link rel="icon" type="image/png" href="kingssolution.png">
+  <title>Upload Images to Cloudinary</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: white;
+      text-align: center;
+      padding: 25px;
+      font-size: 1.8em;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0 20px;
+      border: 2px dashed #26d0ce;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      background: #f9f9f9;
+    }
+
+    button {
+      background: #1a2980;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      width: 100%;
+    }
+
+    button:hover {
+      background: #26d0ce;
+      transform: scale(1.03);
+    }
+
+    .image-list {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .image-item {
+      background: #f1faff;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .image-item img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .url-box {
+      font-size: 12px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      margin: 5px 0;
+      word-wrap: break-word;
+    }
+
+    .copy-btn {
+      background: #26d0ce;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.3s;
+    }
+
+    .copy-btn:hover {
+      background: #1a2980;
+    }
+  </style>
+</head>
+<body>
+  <header>📤 Cloudinary Image Uploader</header>
+
+  <div class="container">
+    <h2>Select and Upload Image(s)</h2>
+    <input type="file" id="imageInput" accept="image/*" multiple>
+    <button id="uploadBtn">Upload to Cloudinary</button>
+    <div id="imageList" class="image-list"></div>
+    <div>
+      <a href="questionUploader.html">Question uploader</a>
+    </div>
+  </div>
+  <script>
+    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dnsuizb8o/upload";
+    const CLOUDINARY_UPLOAD_PRESET = "be6pebbj";
+
+    document.getElementById("uploadBtn").addEventListener("click", async () => {
+      const files = document.getElementById("imageInput").files;
+      const imageList = document.getElementById("imageList");
+      imageList.innerHTML = "";
+
+      if (!files.length) {
+        Swal.fire("No File", "Please select at least one image to upload.", "warning");
+        return;
+      }
+
+      Swal.fire({
+        title: "Uploading...",
+        text: "Please wait while your images are being uploaded.",
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+      });
+
+      for (const file of files) {
+        try {
+          const formData = new FormData();
+          formData.append("file", file);
+          formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+          const res = await fetch(CLOUDINARY_URL, { method: "POST", body: formData });
+          const data = await res.json();
+
+          if (data.secure_url) {
+            const div = document.createElement("div");
+            div.className = "image-item";
+            div.innerHTML = `
+              <img src="${data.secure_url}" alt="Uploaded Image">
+              <div class="url-box">${data.secure_url}</div>
+              <button class="copy-btn" onclick="copyUrl('${data.secure_url}')">📋 Copy URL</button>
+            `;
+            imageList.appendChild(div);
+          }
+        } catch (error) {
+          console.error("Error uploading:", error);
+        }
+      }
+
+      Swal.close();
+      Swal.fire("✅ Done!", "All selected images have been uploaded successfully.", "success");
+    });
+
+    function copyUrl(url) {
+      navigator.clipboard.writeText(url);
+      Swal.fire("📋 Copied!", "Image URL copied to clipboard.", "success");
+    }
+  </script>
+</body>
+</html>

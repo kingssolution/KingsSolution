@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
+  <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="author" content="KingsSolution Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="KingsSolution - Trusted WAEC, NECO & GCE Updates and Assistance">
+  <meta property="og:description" content="KingsSolution provides real-time updates and verified answers for WAEC, NECO, and GCE. Trusted by thousands of students nationwide.">
+  <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png">
+  <meta property="og:url" content="https://kingssolution.netlify.app/excelUploader.html">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
+  <link rel="canonical" href="https://kingssolution.netlify.app/excelUploader.html" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
+  <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
+  <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
+  <link rel="icon" type="image/png" href="kingssolution.png">
+  <title>📤 Upload Question Bank CSV to Firestore</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1a2980, #26d0ce);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 12px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin: 10px;
+      outline: none;
+    }
+
+    input[type="file"] {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    button {
+      background: #1a2980;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #26d0ce;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h2>📤 Upload Question Bank CSV to Firestore</h2>
+  <input type="file" id="csvFile" accept=".csv">
+  <button id="uploadBtn">Upload to Firestore</button>
+  <div>
+    <a href="imageUploader.html">Image uploader</a>
+  </div>
+  <footer>🔥 Powered by KingsSolution</footer>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEA3gSy36gSnyKoPj4NFLl9yIldR4LkpY",
+      authDomain: "kings-solution-bba0e.firebaseapp.com",
+      projectId: "kings-solution-bba0e",
+      storageBucket: "kings-solution-bba0e.appspot.com",
+      messagingSenderId: "18111445430",
+      appId: "1:18111445430:web:5ca39cd117b0e2a7e6a917",
+      measurementId: "G-XL28VT1DGT"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // ✅ Parse CSV (smart handling for quotes, spacing, etc.)
+    function parseCSV(text) {
+      const rows = text.trim().split(/\r?\n/);
+      const headers = rows.shift().split(",").map(h => h.trim().replace(/^"|"$/g, ""));
+      return rows.map(row => {
+        const values = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.trim().replace(/^"|"$/g, ""));
+        const obj = {};
+        headers.forEach((h, i) => obj[h] = values[i] || "");
+        return obj;
+      });
+    }
+
+    // ✅ Extract options dynamically (A–Z)
+    function extractOptions(row) {
+      const options = {};
+      Object.keys(row).forEach(key => {
+        if (key.startsWith("options.") && row[key]) {
+          const letter = key.split(".")[1].trim().toUpperCase();
+          options[letter] = row[key];
+        }
+      });
+      return options;
+    }
+
+    document.getElementById("uploadBtn").addEventListener("click", async () => {
+      const fileInput = document.getElementById("csvFile");
+      if (!fileInput.files.length) {
+        Swal.fire("⚠️ No File", "Please choose a CSV file first.", "warning");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const text = await file.text();
+      const rows = parseCSV(text);
+      let uploaded = 0, skipped = 0;
+
+      Swal.fire({
+        title: "Uploading...",
+        html: `Uploaded <b>0</b> / ${rows.length}`,
+        allowOutsideClick: false,
+        didOpen: () => Swal.showLoading()
+      });
+      const b = Swal.getHtmlContainer().querySelector("b");
+
+      for (const row of rows) {
+        const exam = row.exam?.trim();
+        const year = row.year?.trim();
+        const subject = row.subject?.trim();
+
+        if (!exam || !year || !subject) {
+          skipped++;
+          continue;
+        }
+
+        try {
+          const data = {
+            topic: row.topic || "",
+            question: row.question || "",
+            options: extractOptions(row),
+            answer: row.answer || "",
+            explanation: row.explanation || "",
+            imageUrl: row.imageUrl || "",
+            createdAt: new Date()
+          };
+
+          await addDoc(collection(db, "CBT", exam, year, subject, "Questions"), data);
+          uploaded++;
+          b.textContent = uploaded;
+        } catch (err) {
+          console.error("❌ Upload Error:", err);
+          skipped++;
+        }
+      }
+
+      Swal.fire({
+        icon: "success",
+        title: "✅ Upload Complete",
+        html: `
+          <p><b>${uploaded}</b> questions uploaded successfully.</p>
+          <p><b>${skipped}</b> skipped (check your CSV rows).</p>
+        `
+      });
+    });
+  </script>
+</body>
+</html>

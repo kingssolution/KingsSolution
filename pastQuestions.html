@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
+  <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="author" content="KingsSolution Team">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="KingsSolution - Trusted WAEC, NECO & GCE Updates and Assistance">
+  <meta property="og:description" content="KingsSolution provides real-time updates and verified answers for WAEC, NECO, and GCE. Trusted by thousands of students nationwide.">
+  <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png">
+  <meta property="og:url" content="https://kingssolution.netlify.app/pastQuestions">
+  <meta property="og:type" content="website">
+  <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
+  <link rel="canonical" href="https://kingssolution.netlify.app/pastQuestions" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
+  <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
+  <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
+  <title>CBT Practice</title>
+  
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #eef2f3, #8e9eab);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      color: #1e293b;
+      padding: 25px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      transition: 0.3s;
+    }
+    
+    select,
+    input,
+    button {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    
+    input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 8px 20px rgba(30, 144, 255, 0.06);
+    }
+    
+    input::placeholder {
+      color: #8799b1;
+      font-style: italic;
+    }
+    
+    select:hover {
+      border-color: rgba(30, 144, 255, 0.2);
+    }
+    
+    select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    button {
+      color: white;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background: #26d0ce;
+      transform: scale(1.02);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .question-box {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+    
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+      padding: 8px 10px;
+      border-radius: 5px;
+      transition: 0.2s;
+      border: 1px solid #e0e0e0;
+    }
+    
+    .options label:hover {
+      background: #f7faff;
+      border-color: #26d0ce;
+    }
+    
+    .options input[type="radio"] {
+      flex-shrink: 0;
+      margin: 0;
+      width: 20px;
+      height: 20px;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    
+    .timer {
+      font-weight: bold;
+      color: red;
+      text-align: right;
+      margin-bottom: 10px;
+    }
+    
+    .progress {
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #1a2980;
+    }
+    
+    .result-box {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    
+    .correct {
+      color: green;
+    }
+    
+    .wrong {
+      color: red;
+    }
+    
+    img {
+      border-radius: 8px;
+      margin: 10px 0;
+      max-width: 100%;
+    }
+    
+    button.nav-disabled {
+      opacity: 0.55;
+      transform: none;
+      cursor: pointer;
+      /* still clickable so SweetAlert displays */
+      box-shadow: none;
+    }
+    
+    .copyright {
+      margin-top: 1rem;
+      margin-bottom: -50px;
+      color: #94a3b8;
+      text-align: center;
+      font-size: 12px;
+      padding: 15px 10px;
+      backdrop-filter: blur(5px);
+    }
+    
+    .copyright span {
+      font-weight: 600;
+      color: #3b82f6;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    CBT Exam Practice
+  </header>
+  
+  <!-- Setup Page -->
+  <div class="container" id="setup-page">
+    <h2>Start CBT Practice</h2>
+    
+    <label>Exam Type:</label>
+    <select id="examSelect">
+      <option value="">-- Select Exam --</option>
+      <option value="JAMB">JAMB</option>
+      <option value="WAEC" disabled>WAEC</option>
+      <option value="NECO" disabled>NECO</option>
+      <option value="JUPEB" disabled>JUPEB</option>
+      <option value="NABTEB" disabled>NABTEB</option>
+      <option value="IJMB" disabled>IJMB</option>
+    </select>
+    
+    <label>Year:</label>
+    <select id="yearSelect">
+      <option value="">-- Select Year --</option>
+      <option value="2015">2015</option>
+      <option value="2016">2016</option>
+      <option value="2017">2017</option>
+      <option value="2018">2018</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <option value="2023">2023</option>
+      <option value="2024">2024</option>
+      <option value="2025" disabled>2025</option>
+    </select>
+    
+    <label>Subject:</label>
+    <select id="subjectSelect">
+      <option value="">-- Select Subject --</option>
+      <option value="Mathematics" disabled>Mathematics</option>
+      <option value="English" disabled>English</option>
+      <option value="Civic Education" disabled>Civic Education</option>
+      <option value="Physics" disabled>Physics</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Biology" disabled>Biology</option>
+      <option value="Literature in English">Literature in English</option>
+      <option value="Govenment" disabled>Govenment</option>
+      <option value="Geography" disabled>Geography</option>
+      <option value="Economics" disabled>Economics</option>
+      <option value="Commerce" disabled>Commerce</option>
+      <option value="Accounting" disabled>Accounting</option>
+      <option value="Agricultural science" disabled>Agricultural science</option>
+      <option value="Further Mathematics" disabled>Further Mathematics</option>
+      <option value="Christian religious studies" disabled>Christian religious studies</option>
+      <option value="Office Practice" disabled>Office Practice</option>
+      <option value="Marketing" disabled>Marketing</option>
+      <option value="Catering" disabled>Catering</option>
+      <option value="I.C.T" disabled>I.C.T</option>
+      <option value="Data processing" disabled>Data processing</option>
+      <option value="P.H.E" disabled>P.H.E</option>
+      <option value="Home management" disabled>Home management</option>
+      <option value="Insurance" disabled>Insurance</option>
+      <option value="Tourism" disabled>Tourism</option>
+      <option value="Health Science" disabled>Health Science</option>
+      <option value="Animal Husbandry" disabled>Animal Husbandry</option>
+      <option value="Book Keeping" disabled>Book Keeping</option>
+      <option value="Health Education" disabled>Health Education</option>
+      <option value="Food and nutrition" disabled>Food and nutrition</option>
+    </select>
+    
+    <label>Number of Questions:</label>
+    <input type="number" id="questionCount" placeholder="e.g. 100">
+    
+    <label>Time (minutes):</label>
+    <input type="number" id="timerInput" placeholder="e.g. 60">
+    
+    <button id="startExamBtn">Start Exam</button>
+    <button onclick="window.location.href = 'index.html'">Home</button>
+  </div>
+  
+  <!-- Exam Page -->
+  <div class="container hidden" id="exam-page">
+    <div class="timer" id="timer"></div>
+    <div class="progress" id="progress"></div>
+    <div class="question-box" id="questionBox"></div>
+    <div class="nav-buttons">
+      <button id="prevBtn">Previous</button>
+      <button id="nextBtn">Next</button>
+      <button id="submitBtn">Submit</button>
+    </div>
+  </div>
+  
+  <!-- Result Page -->
+  <div class="container hidden" id="result-page">
+    <h2>Exam Results</h2>
+    <p id="score"></p>
+    <div id="review"></div>
+  </div>
+  <footer>
+    <div class="copyright">
+      Powered by <span>KingsSolution</span> | © 2025 All Rights Reserved
+    </div>
+  </footer>
+  
+  
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.2.0/firebase-firestore.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyCEA3gSy36gSnyKoPj4NFLl9yIldR4LkpY",
+      authDomain: "kings-solution-bba0e.firebaseapp.com",
+      projectId: "kings-solution-bba0e",
+      storageBucket: "kings-solution-bba0e.appspot.com",
+      messagingSenderId: "18111445430",
+      appId: "1:18111445430:web:5ca39cd117b0e2a7e6a917",
+      measurementId: "G-XL28VT1DGT"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    let questions = [];
+    let currentIndex = 0;
+    let answers = {};
+    let timerInterval;
+    
+    // Shuffle helper
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+    
+    // ✅ Start Exam Button
+    document.getElementById("startExamBtn").addEventListener("click", async () => {
+      const exam = document.getElementById("examSelect").value;
+      const year = document.getElementById("yearSelect").value;
+      const subject = document.getElementById("subjectSelect").value;
+      const questionCount = parseInt(document.getElementById("questionCount").value);
+      const timerMinutes = parseInt(document.getElementById("timerInput").value);
+      
+      if (!exam || !year || !subject || !questionCount || !timerMinutes) {
+        Swal.fire("Missing Fields", "Please fill all fields to continue.", "warning");
+        return;
+      }
+      
+      const qRef = collection(db, "CBT", exam, year, subject, "Questions");
+      const snapshot = await getDocs(qRef);
+      let allQuestions = snapshot.docs.map(doc => doc.data());
+      
+      if (allQuestions.length === 0) {
+        Swal.fire("No Questions", "No questions found for this selection.", "error");
+        return;
+      }
+      
+      questions = shuffleArray(allQuestions).slice(0, questionCount);
+      
+      document.getElementById("setup-page").classList.add("hidden");
+      document.getElementById("exam-page").classList.remove("hidden");
+      startExam(questions, timerMinutes);
+    });
+    
+    // ✅ Start Exam
+    function startExam(questions, timerMinutes) {
+      currentIndex = 0;
+      answers = {};
+      let timeLeft = timerMinutes * 60;
+      
+      timerInterval = setInterval(() => {
+        let min = Math.floor(timeLeft / 60);
+        let sec = timeLeft % 60;
+        document.getElementById("timer").textContent = `⏳ Time Left: ${min}:${sec < 10 ? "0" : ""}${sec}`;
+        timeLeft--;
+        if (timeLeft < 0) {
+          clearInterval(timerInterval);
+          Swal.fire("⏰ Time’s Up!", "Your exam will be submitted automatically.", "info").then(() => finishExam());
+        }
+      }, 1000);
+      
+      renderQuestion();
+    }
+    
+    // ---------- helper: safe HTML escape ----------
+    function escapeHtml(str = "") {
+      return String(str)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+    
+    // ---------- helper: normalize options into ordered [key, value] pairs ----------
+    function getOptionEntries(q) {
+      const opts = q && q.options ? q.options : {};
+      // If options is an array, map to letters A, B, C...
+      if (Array.isArray(opts)) {
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        return opts
+          .map((v, i) => [letters[i] || String(i + 1), String(v || "")])
+          .filter(([, val]) => val.trim() !== "")
+          .sort((a, b) => a[0].localeCompare(b[0]));
+      }
+      
+      // If it's an object, get keys and values
+      const entries = Object.keys(opts || {}).map(k => [String(k), String(opts[k] ?? "")])
+        .filter(([, val]) => val.trim() !== "");
+      
+      // Sort alphabetically but ensure 'A,B,C...' order for single letters
+      entries.sort((a, b) => {
+        const ka = a[0].toString().toUpperCase();
+        const kb = b[0].toString().toUpperCase();
+        if (/^[A-Z]$/.test(ka) && /^[A-Z]$/.test(kb)) {
+          return ka.charCodeAt(0) - kb.charCodeAt(0);
+        }
+        return ka.localeCompare(kb);
+      });
+      
+      return entries;
+    }
+    
+    // ---------- Render Question (updated) ----------
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      if (!q) {
+        document.getElementById("questionBox").innerHTML = "<p>No question available.</p>";
+        document.getElementById("progress").textContent = `Question 0 of 0`;
+        return;
+      }
+      
+      // progress
+      document.getElementById("progress").textContent =
+        `Question ${currentIndex + 1} of ${questions.length} | Answered: ${Object.keys(answers).length}`;
+      
+      // normalized, ordered option entries (supports A-F etc.)
+      const optionEntries = getOptionEntries(q);
+      
+      // build options HTML
+      let optionsHtml = "";
+      if (optionEntries.length === 0) {
+        optionsHtml = `<p><em>No options available.</em></p>`;
+      } else {
+        optionsHtml = optionEntries.map(([key, val]) => {
+          const checked = answers[currentIndex] === key ? "checked" : "";
+          return `
+        <label>
+          <input type="radio" name="q${currentIndex}" value="${escapeHtml(key)}" ${checked}>
+          <span>(${escapeHtml(key)}) ${escapeHtml(val)}</span>
+        </label>
+      `;
+        }).join("");
+      }
+      
+      // ✅ image displayed above the question now
+      document.getElementById("questionBox").innerHTML = `
+    ${q.imageUrl ? `<div style="text-align:center;"><img src="${escapeHtml(q.imageUrl)}" width="250" style="border-radius:8px; margin-bottom:15px;"></div>` : ""}
+    <h3>${escapeHtml(q.question || "")}</h3>
+    <div class="options">${optionsHtml}</div>
+  `;
+      
+      // wire up event listeners for radios
+      document.querySelectorAll(`input[name="q${currentIndex}"]`).forEach(radio => {
+        radio.addEventListener("change", e => {
+          answers[currentIndex] = e.target.value;
+          updateNavButtons();
+        });
+      });
+      
+      // ensure nav visuals are correct
+      updateNavButtons();
+      
+      // scroll to top (helps on mobile/long content)
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    
+    // ---------- Navigation (updated) ----------
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderQuestion();
+        return;
+      }
+      // always show alert when user can't go further back
+      Swal.fire({
+        icon: 'warning',
+        title: 'First Question',
+        text: "You're already on the first question.",
+        confirmButtonColor: '#1a2980'
+      });
+    });
+    
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      if (currentIndex < questions.length - 1) {
+        currentIndex++;
+        renderQuestion();
+        return;
+      }
+      // always show alert when user can't go forward
+      Swal.fire({
+        icon: 'info',
+        title: 'Last Question',
+        text: "You've reached the last question.",
+        confirmButtonColor: '#1a2980'
+      });
+    });
+    
+    // ---------- updateNavButtons (no DOM "disabled" attr so clicks still fire) ----------
+    function updateNavButtons() {
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      
+      if (currentIndex === 0) {
+        prevBtn.classList.add("nav-disabled");
+        prevBtn.setAttribute("aria-disabled", "true");
+      } else {
+        prevBtn.classList.remove("nav-disabled");
+        prevBtn.removeAttribute("aria-disabled");
+      }
+      
+      if (currentIndex === questions.length - 1) {
+        nextBtn.classList.add("nav-disabled");
+        nextBtn.setAttribute("aria-disabled", "true");
+      } else {
+        nextBtn.classList.remove("nav-disabled");
+        nextBtn.removeAttribute("aria-disabled");
+      }
+    }
+    
+    document.getElementById("submitBtn").addEventListener("click", () => {
+      Swal.fire({
+        title: "Submit Exam?",
+        text: "Are you sure you want to submit your answers?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes, Submit",
+        cancelButtonText: "No"
+      }).then(result => {
+        if (result.isConfirmed) {
+          clearInterval(timerInterval);
+          finishExam();
+        }
+      });
+    });
+    
+    // ✅ Finish Exam
+    window.finishExam = function() {
+      document.getElementById("exam-page").classList.add("hidden");
+      document.getElementById("result-page").classList.remove("hidden");
+      
+      let score = 0;
+      questions.forEach((q, i) => {
+        if (answers[i] === q.answer) score++;
+      });
+      
+      document.getElementById("score").innerHTML = `<b>Your Score:</b> ${score} / ${questions.length}`;
+      
+      const reviewDiv = document.getElementById("review");
+      reviewDiv.innerHTML = "";
+      questions.forEach((q, i) => {
+        reviewDiv.innerHTML += `
+          <div class="result-box">
+            <h4>Q${i + 1}. ${q.question}</h4>
+            ${q.imageUrl ? `<img src="${q.imageUrl}" width="200"><br>` : ""}
+            <p>Your Answer: <span class="${answers[i] === q.answer ? "correct" : "wrong"}">
+              ${answers[i] ? `(${answers[i]}) ${q.options[answers[i]]}` : "Not answered"}
+            </span></p>
+            <p>Correct Answer: <b>(${q.answer}) ${q.options[q.answer]}</b></p>
+            <p>Explanation: ${q.explanation || "None"}</p>
+          </div>
+        `;
+      });
+      
+      Swal.fire("✅ Exam Submitted!", `You scored ${score} / ${questions.length}.`, "success");
+    }
+    
+    history.pushState(null, null, location.href);
+    window.onpopstate = function() {
+      // Redirect to exam selection page
+      window.location.href = "pastQuestions.html"; // Replace with your real exam selection file
+    };
+  </script>
+</body>
+
+</html>
