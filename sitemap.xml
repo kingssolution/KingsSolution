@@ -9,23 +9,28 @@
 
 <url>
   <loc>https://kingssolution.netlify.app/</loc>
-  <lastmod>2025-10-24T08:09:13+00:00</lastmod>
+  <lastmod>2025-12-17T08:25:10+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://kingssolution.netlify.app/affiliatelanding</loc>
-  <lastmod>2025-10-24T08:09:13+00:00</lastmod>
+  <loc>https://kingssolution.netlify.app/blog</loc>
+  <lastmod>2025-12-17T08:25:10+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://kingssolution.netlify.app/2025-WAEC-TIMETABLE.pdf</loc>
-  <lastmod>2025-10-24T08:09:13+00:00</lastmod>
+  <lastmod>2025-12-17T08:25:10+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://kingssolution.netlify.app/partnersignin</loc>
-  <lastmod>2025-10-24T08:09:13+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://kingssolution.netlify.app/WAEC-GCE-Timetable-2025-%E2%80%94-WASSCE-for-Private-Candidates-Second-Series.pdf</loc>
+  <lastmod>2025-12-17T08:25:10+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kingssolution.netlify.app/affiliatelanding</loc>
+  <lastmod>2025-12-17T08:25:10+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
