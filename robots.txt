@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://kingssolution.netlify.app/sitemap.xml
+Sitemap: https://kingssolution.vercel.app/sitemap.xmll
