@@ -670,7 +670,7 @@
   <div class="ad-slot"></div>
   `;
         
-        document.querySelectorAll(".ad-slot:not([data-loaded])").forEach(slot => {
+        document.querySelectorAll(".ad-slot").forEach(slot => {
           slot.setAttribute("data-loaded", "true");
           slot.innerHTML = `
   <ins class="adsbygoogle"
