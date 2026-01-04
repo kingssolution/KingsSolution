@@ -5,18 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Latest SSCE exam news, exam updates, and official academic information for Nigerian students." />
-  <meta name="robots" content="max-image-preview:large" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="WAEC News & Updates – KingsSolution" />
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="KingsSolution News & Exam Updates" />
   <meta property="og:description" content="Stay informed with verified WAEC updates, exam schedules, and student guidance." />
   <meta property="og:image" content="https://kingssolution.netlify.app/kingssolution.png" />
   <meta name="googlebot" content="max-image-preview:large">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="keywords" content="WAEC expo 2026, NECO answers, eaxm news, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
+  <meta name="keywords" content="WAEC updates, NECO news, JAMB registration, Nigerian exams, KingsSolution">
   <meta name="author" content="KingsSolution Team">
   <meta property="og:url" content="https://kingssolution.netlify.app/blog.html">
   <link rel="canonical" href="https://kingssolution.netlify.app/blog.html" />
-  <meta name="robots" content="index, follow">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
   <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
@@ -33,46 +32,23 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://kingssolution.netlify.app/blog.html"
-      },
-      "headline": "WAEC News & Exam Updates",
-      "description": "Latest WAEC, NECO, JAMB and education news with verified exam updates and student guidance from KingsSolution.",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://kingssolution.netlify.app/kingssolution.png",
-        "width": 1200,
-        "height": 630
-      },
-      "datePublished": "2025-04-01T08:00:00+01:00",
-      "dateModified": "2025-04-01T08:00:00+01:00",
-      "author": {
-        "@type": "Person",
-        "name": "KingsSolution Editorial Team",
-        "url": "https://kingssolution.netlify.app"
-      },
+      "@type": "CollectionPage",
+      "name": "KingsSolution News & Exam Updates",
+      "description": "Latest WAEC, NECO, JAMB and Nigerian education news.",
+      "url": "https://kingssolution.netlify.app/blog.html",
       "publisher": {
         "@type": "Organization",
         "name": "KingsSolution",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://kingssolution.netlify.app/kingssolution.png",
-          "width": 512,
-          "height": 512
+          "url": "https://kingssolution.netlify.app/kingssolution.png"
         }
-      },
-      "articleSection": "Education News",
-      "keywords": [
-        "WAEC news",
-        "NECO updates",
-        "JAMB news",
-        "Exam updates Nigeria",
-        "KingsSolution"
-      ]
+      }
     }
   </script>
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337792858984422" crossorigin="anonymous"></script>
+  
   <style>
     body {
       margin: 0;
@@ -476,7 +452,7 @@
   
   <header>
     <div class="logo">
-      <img src="kingssolution.png" alt="KS Logo">
+      <img src="kingssolution.png" alt="KingsSolution official logo">
       <span>KingsSolution</span>
     </div>
     <div class="menu-toggle" id="menuToggle">
@@ -683,17 +659,30 @@
         <div class="preview">
           ${post.excerpt}
         </div>
-
-        ${
-          hasLongContent
-            ? `<div class="full-content">${post.content}</div>
-               <button class="read-more">Read more</button>`
-            : ""
-        }
-      </article>
-    `;
+  
+  ${
+  hasLongContent
+  ? `<div class="full-content">${post.content}</div>
+  <button class="read-more">Read more</button>`
+  : ""
+  }
+  </article>
+  <div class="ad-slot"></div>
+  `;
+        
+        document.querySelectorAll(".ad-slot:not([data-loaded])").forEach(slot => {
+          slot.setAttribute("data-loaded", "true");
+          slot.innerHTML = `
+  <ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-4o+db+3z-8k+bi"
+     data-ad-client="ca-pub-8337792858984422"
+     data-ad-slot="7412795931"></ins>
+  `;
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        });
       });
-      
       enableReadMore();
     }
     
