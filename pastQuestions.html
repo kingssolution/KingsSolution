@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="description" content="KingsSolution provides verified WAEC, NECO, and GCE expo answers, latest exam updates, and preparation tips to help Nigerian students pass easily.">
   <meta name="keywords" content="WAEC expo 2026, NECO answers, GCE runs, NABTEB answers, KingsSolution, JUPEB updates, Nigerian exams, waec result, waec updates, free expo site, EXPO, WAEC, NECO, GCE, NABTEB, JUPEB, IJMB">
@@ -16,15 +15,30 @@
   <meta property="og:type" content="website">
   <meta name="google-site-verification" content="5Pspuiw6AmknmoYMZraWfhYichkz-SJj4kl6fb0IVX4" />
   <link rel="canonical" href="https://kingssolution.netlify.app/pastQuestions" />
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow, noimageindex">
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="KingsSolution - Empowering Students and Partners" />
   <meta name="twitter:description" content="Get verified exam updates, study resources, and join our affiliate program to earn." />
   <meta name="twitter:image" content="https://kingssolution.netlify.app/kingssolution.png" />
-  <title>CBT Practice</title>
+  <title>Free JAMB CBT Practice 2015–2024 | KingsSolution</title>
   
-  <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337792858984422" crossorigin="anonymous"></script>
+  
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "KingsSolution",
+      "url": "https://kingssolution.netlify.app",
+      "logo": "https://kingssolution.netlify.app/kingssolution.png",
+      "sameAs": [
+        "https://www.facebook.com/kingssolution",
+        "https://twitter.com/kingssolution",
+        "https://www.youtube.com/@kingssolution"
+      ]
+    }
+  </script>
   
   <style>
     body {
@@ -179,7 +193,6 @@
       opacity: 0.55;
       transform: none;
       cursor: pointer;
-      /* still clickable so SweetAlert displays */
       box-shadow: none;
     }
     
@@ -290,6 +303,7 @@
       <button id="nextBtn">Next</button>
       <button id="submitBtn">Submit</button>
     </div>
+    <div class="ads"></div>
   </div>
   
   <!-- Result Page -->
@@ -297,6 +311,7 @@
     <h2>Exam Results</h2>
     <p id="score"></p>
     <div id="review"></div>
+    <div class="ads-slot"></div>
   </div>
   <footer>
     <div class="copyright">
@@ -379,6 +394,16 @@
       }, 1000);
       
       renderQuestion();
+      
+      document.querySelectorAll(".ads").forEach(slot => {
+        slot.innerHTML = `<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-4o+db+3z-8k+bi"
+     data-ad-client="ca-pub-8337792858984422"
+     data-ad-slot="7412795931"></ins>`;
+      });
+      (adsbygoogle = window.adsbygoogle || []).push({});
     }
     
     // ---------- helper: safe HTML escape ----------
@@ -572,6 +597,16 @@
       });
       
       Swal.fire("✅ Exam Submitted!", `You scored ${score} / ${questions.length}.`, "success");
+      
+      document.querySelectorAll(".ads-slot").forEach(slot => {
+        slot.innerHTML = `<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-4o+db+3z-8k+bi"
+     data-ad-client="ca-pub-8337792858984422"
+     data-ad-slot="7412795931"></ins>`;
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      });
     }
     
     history.pushState(null, null, location.href);
